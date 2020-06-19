@@ -11,7 +11,9 @@ last step.
 # ...
 steps:
   - uses: actions/checkout@v2.3.0
-  # ...
+# - step 2
+# - step 3
+# - ...
   - uses: colpal/actions-clean@v1.0.2
     if: ${{ always() }} # To ensure this step runs even when earlier steps fail
 ```
