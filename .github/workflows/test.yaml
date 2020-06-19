@@ -5,7 +5,12 @@ name: Test
 
 jobs:
   main:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - self-hosted
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2.3.0
       - run: mkdir .hidden-folder
