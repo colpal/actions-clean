@@ -1,0 +1,13 @@
+---
+name: Test
+
+'on': push
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - run: mkdir .hidden-folder
+      - run: touch .hidden-folder/file file
+      - uses: .
+      - run: ! test -d .hidden-folder && ! test -f file
