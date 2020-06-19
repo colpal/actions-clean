@@ -10,4 +10,4 @@ jobs:
       - run: mkdir .hidden-folder
       - run: touch .hidden-folder/file file
       - uses: .
-      - run: ! test -d .hidden-folder && ! test -f file
+      - run: '! test -d .hidden-folder && ! test -f file'
