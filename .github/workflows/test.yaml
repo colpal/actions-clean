@@ -24,4 +24,5 @@ jobs:
       - uses: ./
       - run: ls -aR $RUNNER_TEMP
 
-      - run: '! test -d .hidden-folder && ! test -f file'
+      - run: '! test -d .hidden-folder
+              && ! test -f file'
