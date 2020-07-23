@@ -19,10 +19,10 @@ jobs:
         with:
           entrypoint: sh
           args: -c "touch $HOME/file"
-
-      - run: ls -aR $RUNNER_TEMP
       - uses: ./
-      - run: ls -aR $RUNNER_TEMP
-
       - run: '! test -d .hidden-folder
               && ! test -f file'
+      - uses: docker://busybox:1
+        with:
+          entrypoint: sh
+          args: -c "! test -f $HOME/file"
