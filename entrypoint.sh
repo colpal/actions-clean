@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eux
 rm -rf \
-  "${RUNNER_TEMP:?}" \
+  "${HOME:?}" \
   "${GITHUB_WORKSPACE:?}"/* \
   "${GITHUB_WORKSPACE:?}"/.[!.]* \
   "${GITHUB_WORKSPACE:?}"/..?*
