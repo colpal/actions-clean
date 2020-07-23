@@ -18,14 +18,10 @@ jobs:
       - uses: docker://busybox:1
         with:
           entrypoint: sh
-          args: -c "ls -aR $GITHUB_WORKSPACE"
-      - uses: docker://busybox:1
-        with:
-          entrypoint: sh
-          args: -c "ls -aR $(dirname $GITHUB_EVENT_PATH/..)"
-      - uses: docker://busybox:1
-        with:
-          entrypoint: sh
-          args: -c "ls -aR $HOME"
+          args: -c "touch $HOME/file"
+
+      - run: ls -aR $RUNNER_TEMP
       - uses: ./
+      - run: ls -aR $RUNNER_TEMP
+
       - run: '! test -d .hidden-folder && ! test -f file'
