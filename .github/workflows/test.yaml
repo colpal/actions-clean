@@ -22,7 +22,7 @@ jobs:
       - uses: docker://busybox:1
         with:
           entrypoint: sh
-          args: -c "ls -aR $GITHUB_EVENT_PATH/.."
+          args: -c "ls -aR $(dirname $GITHUB_EVENT_PATH/..)"
       - uses: docker://busybox:1
         with:
           entrypoint: sh
