@@ -16,5 +16,7 @@ jobs:
       - run: mkdir .hidden-folder
       - run: touch .hidden-folder/file file
       - run: ls -aR
+      - run: env
+      - run: pwd
       - uses: ./
       - run: '! test -d .hidden-folder && ! test -f file'
