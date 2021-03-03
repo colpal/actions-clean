@@ -10,5 +10,5 @@ rm -rf \
 containers=$(docker ps --all --quiet)
 self=$(cat /etc/hostname)
 if test "$containers" != "$self"; then
-  printf '%s' "$containers" | grep --fixed-strings --invert-match "$self" | xargs docker rm --force
+  printf '%s' "$containers" | grep -Fv "$self" | xargs docker rm --force
 fi
