@@ -7,4 +7,9 @@ rm -rf \
   "${GITHUB_WORKSPACE:?}"/* \
   "${GITHUB_WORKSPACE:?}"/.[!.]* \
   "${GITHUB_WORKSPACE:?}"/..?*
-docker ps -aq | grep -v "$(cat /etc/hostname)" | xargs docker rm -f
+containers=$(docker ps --all --quiet)
+length=$(printf '%s' "$containers" | wc -l)
+self=$(cat /etc/hostname)
+if test "$length" -gt 1; then
+  printf '%s' "$containers" | grep --fixed-strings --invert-match "$self" | xargs docker rm --force
+fi
