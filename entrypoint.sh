@@ -8,3 +8,4 @@ rm -rf \
   "${GITHUB_WORKSPACE:?}"/.[!.]* \
   "${GITHUB_WORKSPACE:?}"/..?*
 docker ps -a
+cat /etc/hostname
