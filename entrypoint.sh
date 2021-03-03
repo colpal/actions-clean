@@ -7,5 +7,4 @@ rm -rf \
   "${GITHUB_WORKSPACE:?}"/* \
   "${GITHUB_WORKSPACE:?}"/.[!.]* \
   "${GITHUB_WORKSPACE:?}"/..?*
-docker ps -a
-cat /etc/hostname
+docker ps -aq | grep -v "$(cat /etc/hostname)" | xargs docker rm -f
