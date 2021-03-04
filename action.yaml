@@ -8,6 +8,6 @@ inputs:
   container-id:
     required: false
     default: ${{ job.container.id }}
-  services:
+  service-ids:
     required: false
     default: ${{ job.services }}
