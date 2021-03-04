@@ -5,6 +5,11 @@ name: Test
 
 jobs:
   main:
+    services:
+      nginx:
+        image: nginx:alpine
+        ports:
+          - 8080:80
     strategy:
       matrix:
         os:
