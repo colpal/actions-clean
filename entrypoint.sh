@@ -5,7 +5,7 @@ shopt -s inherit_errexit nullglob dotglob
 rm -rf "${HOME:?}"/* "${GITHUB_WORKSPACE:?}"/*
 
 if test "${RUNNER_DEBUG:-0}" != '1'; then
-  set +o errexit
+  set +o xtrace
 fi
 
 all_containers=()
