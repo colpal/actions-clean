@@ -5,6 +5,6 @@ runs:
   using: docker
   image: Dockerfile
 inputs:
-  service-ids:
+  service_ids:
     required: false
     default: ${{ toJSON(job.services.*.id) }}
