@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+set -euo pipefail
 shopt -s inherit_errexit
-env
-printf '==%s==' "$(jq -r '.[]' <<< "$INPUT_SERVICE_IDS")"
 
 rm -rf \
   "${HOME:?}"/* \
