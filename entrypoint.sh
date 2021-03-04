@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -euxo pipefail
 shopt -s inherit_errexit nullglob dotglob
 
-set -x
 rm -rf \
   "${HOME:?}"/* \
   "${GITHUB_WORKSPACE:?}"/*
-set +x
 
 all_containers=()
 readarray all_containers <<< "$(docker ps --all --quiet)"
