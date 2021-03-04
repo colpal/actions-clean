@@ -9,11 +9,12 @@ rm -rf \
 all_containers=()
 readarray all_containers <<< "$(docker ps --all --quiet)"
 
-self=$(cat /etc/hostname)
-protected_containers=("$self")
+protected_containers=()
 if test "$INPUT_SERVICE_IDS" != '[]'; then
   readarray protected_containers <<< "$(jq -r '.[]' <<< "$INPUT_SERVICE_IDS")"
 fi
+self=$(cat /etc/hostname)
+protected_containers+=("$self")
 
 if test "${#protected_containers[@]}" -eq "${#all_containers[@]}"; then
   echo 'No "extra" containers detected.' >&2
