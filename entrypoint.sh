@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 shopt -s inherit_errexit
+env
 
 rm -rf \
   "${HOME:?}"/* \
