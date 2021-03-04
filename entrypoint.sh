@@ -2,6 +2,7 @@
 set -euo pipefail
 shopt -s inherit_errexit
 
+set -x
 rm -rf \
   "${HOME:?}"/* \
   "${HOME:?}"/.[!.]* \
@@ -9,6 +10,7 @@ rm -rf \
   "${GITHUB_WORKSPACE:?}"/* \
   "${GITHUB_WORKSPACE:?}"/.[!.]* \
   "${GITHUB_WORKSPACE:?}"/..?*
+set +x
 
 all_containers=()
 readarray all_containers <<< "$(docker ps --all --quiet)"
@@ -20,6 +22,7 @@ if test "$INPUT_SERVICE_IDS" != '[]'; then
 fi
 
 if test "${#protected_containers[@]}" -eq "${#all_containers[@]}"; then
+  echo 'No "extra" containers detected.' >&2
   exit 0
 fi
 
