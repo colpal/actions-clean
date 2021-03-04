@@ -2,9 +2,7 @@
 set -o errexit -o nounset -o xtrace -o pipefail
 shopt -s inherit_errexit nullglob dotglob
 
-rm -rf \
-  "${HOME:?}"/* \
-  "${GITHUB_WORKSPACE:?}"/*
+rm -rf "${HOME:?}"/* "${GITHUB_WORKSPACE:?}"/*
 
 all_containers=()
 readarray all_containers <<< "$(docker ps --all --quiet)"
