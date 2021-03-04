@@ -1,3 +1,4 @@
-FROM busybox:1.31.1
+FROM alpine:3.13.2
+RUN apk add --no-cache bash docker-cli jq
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
