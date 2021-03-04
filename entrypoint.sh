@@ -15,9 +15,11 @@ rm -rf \
 all_containers=()
 readarray all_containers <<< "$(docker ps --all --quiet)"
 
-protected_containers=()
-readarray protected_containers <<< "$(jq -r '.[]' <<< "$INPUT_SERVICE_IDS")"
-protected_containers+=( "$(cat /etc/hostname)" )
+self=$(cat /etc/hostname)
+protected_containers=("$self")
+if test "$INPUT_SERVICE_IDS" != '[]'; then
+  readarray protected_containers <<< "$(jq -r '.[]' <<< "$INPUT_SERVICE_IDS")"
+fi
 
 if test "${#protected_containers[@]}" -eq "${#all_containers[@]}"; then
   exit 0
