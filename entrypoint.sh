@@ -28,5 +28,4 @@ for id in "${protected_containers[@]}"; do
   grep_flags+=('-e')
   grep_flags+=("$(head -c 12 <<< "$id")")
 done
-
 printf '%s\n' "${all_containers[@]}" | grep -Fv "${grep_flags[@]}" | xargs docker rm --force
