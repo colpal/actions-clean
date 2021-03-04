@@ -4,6 +4,10 @@ shopt -s inherit_errexit nullglob dotglob
 
 rm -rf "${HOME:?}"/* "${GITHUB_WORKSPACE:?}"/*
 
+if test "${RUNNER_DEBUG:-0}" != '1'; then
+  set +o errexit
+fi
+
 all_containers=()
 readarray all_containers <<< "$(docker ps --all --quiet)"
 
