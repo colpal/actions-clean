@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-shopt -s inherit_errexit
+shopt -s inherit_errexit nullglob
 
 set -x
 rm -rf \
