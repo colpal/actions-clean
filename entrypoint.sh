@@ -5,7 +5,7 @@ shopt -s inherit_errexit nullglob dotglob
 set -x
 rm -rf \
   "${HOME:?}"/* \
-  "${GITHUB_WORKSPACE:?}"/* \
+  "${GITHUB_WORKSPACE:?}"/*
 set +x
 
 all_containers=()
