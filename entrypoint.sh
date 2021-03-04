@@ -1,5 +1,6 @@
 #!/bin/sh
 set -eux
+env
 rm -rf \
   "${HOME:?}"/* \
   "${HOME:?}"/.[!.]* \

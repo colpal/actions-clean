@@ -4,3 +4,10 @@ description: A Github Action to clean the workspace on a self-hosted runner
 runs:
   using: docker
   image: Dockerfile
+inputs:
+  container-id:
+    required: false
+    default: ${{ job.container.id }}
+  services:
+    required: false
+    default: ${{ job.services }}
