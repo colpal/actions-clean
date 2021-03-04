@@ -13,7 +13,8 @@ readarray all_containers <<< "$(docker ps --all --quiet)"
 
 protected_containers=()
 if test "$INPUT_SERVICE_IDS" != '[]'; then
-  readarray protected_containers <<< "$(jq -r '.[]' <<< "$INPUT_SERVICE_IDS")"
+  service_ids=$(jq -r '.[]' <<< "$INPUT_SERVICE_IDS")
+  readarray protected_containers <<< "$service_ids"
 fi
 self=$(cat /etc/hostname)
 protected_containers+=("$self")
