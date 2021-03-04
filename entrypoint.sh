@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
-shopt -s inherit_errexit nullglob
+shopt -s inherit_errexit nullglob dotglob
 
 set -x
 rm -rf \
   "${HOME:?}"/* \
-  "${HOME:?}"/.[!.]* \
-  "${HOME:?}"/..?* \
   "${GITHUB_WORKSPACE:?}"/* \
-  "${GITHUB_WORKSPACE:?}"/.[!.]* \
-  "${GITHUB_WORKSPACE:?}"/..?*
 set +x
 
 all_containers=()
