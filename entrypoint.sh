@@ -18,7 +18,7 @@ readarray protected_containers <<< "$(jq -r '.[]' <<< "$INPUT_SERVICE_IDS")"
 protected_containers+=( "$(cat /etc/hostname)" )
 
 if test "${#protected_containers[@]}" -eq "${#all_containers[@]}"; then
-  return 0
+  exit 0
 fi
 
 grep_flags=()
