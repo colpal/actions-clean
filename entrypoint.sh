@@ -2,6 +2,7 @@
 set -euxo pipefail
 shopt -s inherit_errexit
 env
+printf '==%s==' "$(jq -r '.[]' <<< "$INPUT_SERVICE_IDS")"
 
 rm -rf \
   "${HOME:?}"/* \
