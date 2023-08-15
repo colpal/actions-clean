@@ -18,6 +18,7 @@ if test "$INPUT_SERVICE_IDS" != '[]'; then
 fi
 self=$(cat /etc/hostname)
 protected_containers+=("$self")
+protected_containers+=("kind-control-plane")
 
 if test "${#protected_containers[@]}" -eq "${#all_containers[@]}"; then
   echo 'No "extra" containers detected.' >&2
